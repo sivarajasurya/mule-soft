@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="736d0771-f925-422e-b2a7-bf7bcacd0a6e" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<http:request-config name="HTTP_Request_configuration1" doc:name="HTTP Request configuration" doc:id="955606db-43b4-4c1c-afaa-56c7c7386e2d">
+		<http:request-connection host="dummy.restapiexample.com" protocol="HTTPS"/>
+	</http:request-config>
+	<flow name="demo_web_serviceFlow" doc:id="97764a5f-a01d-4ab1-9396-0912c9b19e1d" >
+		<http:listener doc:name="/GET hello" doc:id="419225a5-5ca1-4f77-b541-ef1c09383a9b" config-ref="HTTP_Listener_config" path="/hello1"/>
+		<http:request method="GET" doc:name="Request" doc:id="d0897f4d-93a4-43c4-8f2e-aef85e9e31eb" config-ref="HTTP_Request_configuration1" path="/api/v1/employees"/>
+	</flow>
+</mule>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config"
+		doc:name="HTTP Listener config"
+		doc:id="9b9a070a-6a20-4c9f-9e60-15b861c948cb">
+		<http:listener-connection host="0.0.0.0"
+			port="8081" />
+	</http:listener-config>
+	<flow name="demoFlow"
+		doc:id="11ad90ad-0ec0-409b-92ae-58bc2e511936">
+		<http:listener doc:name="GET"
+			doc:id="06fb618e-43e7-44e1-92a8-fd508b131dd3"
+			config-ref="HTTP_Listener_config" path="/demo" />
+		<logger level="INFO" doc:name="Logger"
+			doc:id="5e29af8f-720e-4408-a605-36a29721e862"
+			message="** my flow has been invoked **" />
+	</flow>
+</mule>
